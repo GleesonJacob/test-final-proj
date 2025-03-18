@@ -7,19 +7,19 @@ app = Flask(__name__)
 # got this from the week 2 code
 def DBconnection():
     try:
-        con = mysql.connector.connect(
-            host="cis2368db.ci5imtpzea1r.us-east-1.rds.amazonaws.com",
-            user="admin",
-            password="HoustonTexas",
-            database="cis2368DB"
+        connection = mysql.connector.connect(
+            host='cis2368db.cffyllx6uqih.us-east-1.rds.amazonaws.com',
+            user='admin',
+            password='MariyaTr4v1',
+            database='cis2368db'
         )
-        print('success')
-        return con
-        
-    except Error as e:
-        print('Database connection error:',e)
+        if connection.is_connected():
+            print("Connected to MySQL database successfully.")
+        return connection
+    except mysql.connector.Error as e:
+        print("Connection error:", e)
         return None
-    
+
 
 #get show books
 @app.route('/show', methods =['GET'])
